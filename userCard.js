@@ -1,5 +1,5 @@
 
-  // Creating a new elemente named template
+  // Creating a new element named template
 const template = document.createElement('template');
 //styling of web component and Html layout
 template.innerHTML= `
