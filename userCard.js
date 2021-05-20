@@ -8,33 +8,38 @@ template.innerHTML= `
     .user-card{
         font-family: 'Inter', sans-serif;
         padding: 10px 10px;
-        background: #f4f4f4;
+        background-color: white;
+        border: 1px solid #bacdd8;
         width: 500px;
         display: grid;
         grid-template-columns: 1fr 2fr;
         grid-gap: 10px;
         margin-bottom: 30px;
         margin-left: 30px;
-        border-bottom: #5a78ef 5px solid;
-        box-shadow: 0 1rem 3rem #000;
+        border-left:  7px solid #2a9d8f;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(153,153,153,.3);
     }
 
     .user-card img {
         width: 100%;
+
     }
 
     .user-card button {
         cursor: pointer;
-        background: #5a78ef;
+        background: #e76f51;
         color: #fff;
         border: 0;
         border-radius: 5px;
         padding: 5px 10px;
     }
 
-
+    .info{
+        display: none;
+    }
     h3 {
-        color: coral;
+        color: #264653;
         font-size: 30px;
      }
     </style>
@@ -52,7 +57,7 @@ template.innerHTML= `
         <p><slot name="phone" /></p>
         </div>
 
-        <button id="toggle-info">Hide Info</button>
+        <button id="toggle-info">Show Info</button>
     </div>
     </div>
 
@@ -75,6 +80,7 @@ class UserCard extends HTMLElement{
         this.getAttribute('name');
         this.shadowRoot.querySelector('img').src=
         this.getAttribute('avatar');
+        
     }
 
     // When the button is clicked, which currently is set by default as who above in the property.
@@ -86,12 +92,13 @@ class UserCard extends HTMLElement{
         const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
 
         if(this.showInfo){
-            info.style.display= 'block';
-            toggleBtn.innerText = 'Hide Info';
-        }
-        else {
             info.style.display= 'none';
             toggleBtn.innerText = 'Show Info';
+        }
+        else {
+           
+            info.style.display= 'block';
+            toggleBtn.innerText = 'Hide Info';
         }
     }
 
